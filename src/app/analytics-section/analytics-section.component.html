@@ -1,0 +1,17 @@
+<div class="metrics-grid">
+  <div class="metric-card" *ngFor="let metric of metrics" [class]="'card-' + metric.color">
+    <div class="card-content">
+      <div class="metric-icon">
+        <i class="fas {{ metric.icon }}"></i>
+      </div>
+      <div class="metric-info">
+        <span class="metric-title">{{ metric.title }}</span>
+        <span class="metric-value">{{ formatValue(metric) }}</span>
+      </div>
+    </div>
+    <div class="metric-change" [class]="getChangeClass(metric.change)">
+      {{ formatChange(metric.change) }}
+      <i class="fas" [class.fa-arrow-up]="metric.change > 0" [class.fa-arrow-down]="metric.change < 0"></i>
+    </div>
+  </div>
+</div>
