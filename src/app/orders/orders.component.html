@@ -1,0 +1,42 @@
+<br/>
+<div class="orders-container">
+    <div *ngIf="isLoading" class="loading-state">
+      <div class="spinner"></div>
+      <p>Loading orders...</p>
+    </div>
+  
+    <div *ngIf="error" class="error-state">
+      <div class="error-icon">!</div>
+      <p>{{ error }}</p>
+      <button class="retry-btn" (click)="loadOrders()">Retry</button>
+    </div>
+  
+    <div *ngIf="!isLoading && !error" class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Date</th>
+            <th>Price</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td data-label="ID">{{ order.id }}</td>
+            <td data-label="Item">{{ order.itemName }}</td>
+            <td data-label="Qty">{{ order.quantity }}</td>
+            <td data-label="Date">{{ order.date | date }}</td>
+            <td data-label="Price">{{ order.price | currency }}</td>
+            <td data-label="Status">
+              <span class="status-badge" [class]="order.status.toLowerCase()">
+                {{ order.status }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -3,10 +3,9 @@
       <!-- Search Bar -->
       <div class="search-container">
         <i class="fas fa-search search-icon"></i>
-        <input type="text" class="search-input" placeholder="Search...">
+        <input type="text" class="search-input" placeholder="Search">
       </div>
       
-      <!-- Right Side Items -->
       <div class="nav-right">
         <!-- Notifications -->
         <div class="notification-icon">
@@ -14,13 +13,12 @@
           <span class="notification-badge">3</span>
         </div>
         
-        <!-- User Profile -->
+        <!--  Profile -->
         <div class="user-profile" (click)="toggleProfileMenu()">
           <img [src]="user.avatar" alt="User Avatar" class="user-avatar">
           <span class="username">{{ user.name }}</span>
           <i class="fas fa-caret-down"></i>
           
-          <!-- Profile Dropdown -->
           <div class="profile-menu" *ngIf="showProfileMenu">
             <a href="#"><i class="fas fa-user"></i> Profile</a>
             <a href="#"><i class="fas fa-cog"></i> Settings</a>

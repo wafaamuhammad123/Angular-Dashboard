@@ -1,66 +1,75 @@
-<div class="sidebar" [class.collapsed]="isCollapsed">
-    <div class="sidebar-header">
-      <h3 *ngIf="!isCollapsed">Dashboard</h3>
-      <button (click)="toggleCollapse()" class="toggle-btn">collapse
-      </button>
+<div class="sidebar" [class.collapsed]="isCollapsed && isMobile">
+  <div class="sidebar-header">
+    <div *ngIf="!isCollapsed || !isMobile" class="header-title">
+      <i class="fas fa-user-tie"></i> 
+      <h3>Manager pro</h3>
     </div>
-    
-    <nav>
-      <ul>
-        <li>
-          <a routerLink="/dashboard" routerLinkActive="active">
-            <i class="fas fa-tachometer-alt"></i>
-            <span *ngIf="!isCollapsed">Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/orders" routerLinkActive="active">
-            <i class="fas fa-shopping-cart"></i>
-            <span *ngIf="!isCollapsed">Orders</span>
-          </a>
-        </li>
-        <li>
-            <a routerLink="/users" routerLinkActive="active">
-              <i class="fas fa-shopping-cart"></i>
-              <span *ngIf="!isCollapsed">Users</span>
-            </a>
-          </li>
-        <li>
-          <a routerLink="/items" routerLinkActive="active">
-            <i class="fas fa-boxes"></i>
-            <span *ngIf="!isCollapsed">Items</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/transactions" routerLinkActive="active">
-            <i class="fas fa-exchange-alt"></i>
-            <span *ngIf="!isCollapsed">Transactions</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/reports" routerLinkActive="active">
-            <i class="fas fa-chart-bar"></i>
-            <span *ngIf="!isCollapsed">Reports</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/messages" routerLinkActive="active">
-            <i class="fas fa-envelope"></i>
-            <span *ngIf="!isCollapsed">Messages</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/support" routerLinkActive="active">
-            <i class="fas fa-question-circle"></i>
-            <span *ngIf="!isCollapsed">Support</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/settings" routerLinkActive="active">
-            <i class="fas fa-cog"></i>
-            <span *ngIf="!isCollapsed">Settings</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <button *ngIf="isMobile" (click)="toggleCollapse()" class="toggle-btn">
+      <i [class]="isCollapsed ? 'fas fa-angle-double-right' : 'fas fa-angle-double-left'"></i>
+    </button>
   </div>
+
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="/dashboard" routerLinkActive="active">
+          <i class="fas fa-home"></i>
+          <span *ngIf="!isCollapsed">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/orders" routerLinkActive="active">
+          <i class="fas fa-shopping-cart"></i>
+          <span *ngIf="!isCollapsed">Orders</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/users" routerLinkActive="active">
+          <i class="fas fa-users"></i>
+          <span *ngIf="!isCollapsed">Users</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/items" routerLinkActive="active">
+          <i class="fas fa-boxes"></i>
+          <span *ngIf="!isCollapsed">Items</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/transactions" routerLinkActive="active">
+          <i class="fas fa-exchange-alt"></i>
+          <span *ngIf="!isCollapsed">Transactions</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/reports" routerLinkActive="active">
+          <i class="fas fa-chart-bar"></i>
+          <span *ngIf="!isCollapsed">Reports</span>
+        </a>
+      </li>
+
+      <li class="menu-divider" *ngIf="!isCollapsed"></li>
+
+      <li>
+        <a routerLink="/messages" routerLinkActive="active">
+          <i class="fas fa-envelope"></i>
+          <span *ngIf="!isCollapsed">Messages</span>
+          <span class="notification-dot" *ngIf=" !isCollapsed"></span>
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="/support" routerLinkActive="active">
+          <i class="fas fa-question-circle"></i>
+          <span *ngIf="!isCollapsed">Support</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/settings" routerLinkActive="active">
+          <i class="fas fa-cog"></i>
+          <span *ngIf="!isCollapsed">Settings</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

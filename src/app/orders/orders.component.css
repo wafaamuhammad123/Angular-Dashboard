@@ -1,0 +1,135 @@
+.orders-container {
+    padding: 20px;
+    padding-top: 5%;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    min-width: 600px;
+  }
+  
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+  }
+  
+  tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+    text-align: center;
+    min-width: 80px;
+  }
+  
+  .shipped { background-color: #e3f2fd; color: #1976d2; }
+  .processing { background-color: #fff8e1; color: #ff8f00; }
+  .delivered { background-color: #e8f5e9; color: #388e3c; }
+  .cancelled { background-color: #ffebee; color: #d32f2f; }
+  .returned { background-color: #f3e5f5; color: #8e24aa; }
+  
+  .loading-state, .error-state {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  .error-state {
+    color: #d32f2f;
+  }
+  
+  .retry-btn {
+    margin-left: 10px;
+    padding: 8px 15px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .retry-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  @media (max-width: 768px) {
+    .orders-container {
+      padding: 10px;
+    }
+  
+    table {
+      min-width: 100%;
+      display: block;
+    }
+  
+    thead {
+      display: none;
+    }
+  
+    tr {
+      display: block;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #e0e0e0;
+      padding: 10px;
+    }
+  
+    td {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      border-bottom: 1px dotted #e0e0e0;
+      text-align: right;
+    }
+  
+    td::before {
+      content: attr(data-label);
+      font-weight: 600;
+      margin-right: 10px;
+      color: #666;
+      text-align: left;
+    }
+  
+    .status-badge {
+      min-width: auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .table-responsive {
+      border-radius: 0;
+    }
+  
+    td {
+      font-size: 14px;
+    }
+  
+    .status-badge {
+      padding: 3px 6px;
+      font-size: 11px;
+    }
+  }

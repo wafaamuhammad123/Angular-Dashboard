@@ -7,14 +7,13 @@ import { Metric } from '../shared/models/metric.model';
   providedIn: 'root'
 })
 export class AnalyticsService {
-  private apiUrl = 'https://mocki.io/v1/388c90b9-df18-4525-ad8b-b17971714e16';
+  private apiUrl = 'https://mocki.io/v1/d75fa802-cff5-4867-906d-68ba8ef2d065';
 
   constructor(private http: HttpClient) {}
 
   getAnalyticsMetrics(): Observable<Metric[]> {
     return this.http.get<any>(this.apiUrl).pipe(
       map(response => {
-        // Access the analytics property from the response
         const apiData = response.analytics || response;
         return this.transformApiData(apiData);
       }),
@@ -24,20 +23,36 @@ export class AnalyticsService {
       })
     );
   }
-
+  getRawAnalytics(): Observable<any> {
+    return this.http.get<any>(this.apiUrl).pipe(
+      map(response => response.analytics || response),
+      catchError(error => {
+        console.error('Error fetching raw analytics:', error);
+        return of({});
+      })
+    );
+  }
+  getOrders(): Observable<any[]> {
+    return this.http.get<any[]>('https://mocki.io/v1/182f9d18-0f8d-41d9-8e90-887dbd0991c4').pipe(
+      catchError(error => {
+        console.error('Error fetching orders:', error);
+        return of([]);
+      })
+    );
+  }
   private transformApiData(apiData: any): Metric[] {
     return [
       {
         title: 'Total Revenue',
         value: apiData.totalRevenue,
-        change: apiData.revenueChangePercentage || 0, // Default to 0 if undefined
+        change: apiData.revenueChangePercentage || 0,
         icon: 'fa-dollar-sign',
         color: 'primary',
         isCurrency: true
       },
       {
         title: 'Today Revenue',
-        value: apiData.todayRevenue || apiData.todaysRevenue, // Handle both spellings
+        value: apiData.todayRevenue || apiData.todaysRevenue, 
         change: apiData.dailyRevenueChange || 0,
         icon: 'fa-calendar-day',
         color: 'success',
