@@ -23,7 +23,6 @@ export class AnalyticsSectionComponent {
       }
       return Number(metric.value).toLocaleString('en-US');
     } catch (e) {
-      console.warn('Formatting error:', e);
       return metric.value.toString();
     }
   }

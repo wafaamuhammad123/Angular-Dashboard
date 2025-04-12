@@ -41,11 +41,8 @@ export class DashboardComponent implements OnInit {
         this.isLoading = false;
   
         this.analyticsService.getRawAnalytics().subscribe(data => {
-          console.log('Raw analytics data:', data); 
           this.weeklyTrendData = data.weeklyTrend;
           this.visitsData = data.visits;
-          console.log('Weekly trend:', this.weeklyTrendData); 
-          console.log('Visits data:', this.visitsData); 
         });
       },
       error: (err) => {
