@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnalyticsService } from '../services/analytics.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
@@ -11,7 +12,10 @@ export class OrdersComponent implements OnInit {
   isLoading = true;
   error: string | null = null;
 
-  constructor(private analyticsService: AnalyticsService) {}
+  constructor(
+    private analyticsService: AnalyticsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadOrders();
@@ -29,5 +33,9 @@ export class OrdersComponent implements OnInit {
         console.error(err);
       }
     });
+  }
+
+  viewOrderDetails(orderId: string): void {
+    this.router.navigate(['/orders', orderId]);
   }
 }

@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "@syncfusion/ej2-angular-calendars": "^29.1.35",
     "chart.js": "^3.9.1",
     "lodash-es": "^4.17.21",
     "ng2-charts": "^3.1.2",

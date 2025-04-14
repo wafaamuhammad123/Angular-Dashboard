@@ -1,4 +1,28 @@
-<br/><br/><h2>Analytics</h2>
+<br><br>  <br><br>  <br><br>
+<div class="dashboard-header">
+
+  <h2>Analytics</h2>
+  
+  <div class="date-filter-container">
+    <div class="preset-buttons">
+      <button 
+        *ngFor="let preset of presets" 
+        [class.active]="selectedRange === preset.value"
+        (click)="onRangeChange(preset.value)">
+        {{ preset.label }}
+      </button>
+    </div>
+    
+    <ejs-daterangepicker 
+      [value]="dateRange"
+      (change)="onDateRangeChange($event)"
+      [presets]="presets"
+      placeholder="Select a date range"
+      floatLabelType="Auto"
+      cssClass="custom-daterangepicker">
+    </ejs-daterangepicker>
+  </div>
+</div>
 
 <div *ngIf="isLoading" class="loading-state">
   <div class="spinner"></div>
@@ -15,15 +39,15 @@
 <app-analytics-section *ngIf="!isLoading && !error" [metrics]="metrics"></app-analytics-section>
 
 <div *ngIf="!isLoading && !error" class="charts-container">
-    <!-- Revenue Trend Chart -->
-    <div class="chart-card">
-      <h3>Report</h3>
-      <app-weekly-trend-chart [trendData]="weeklyTrendData"></app-weekly-trend-chart>
-    </div>
-  
-    <!-- Visits Chart -->
-    <div class="chart-card">
-      <h3> Visits</h3>
-      <app-visits-bar-chart [visitsData]="visitsData"></app-visits-bar-chart>
-    </div>
+  <!-- Revenue Trend Chart -->
+  <div class="chart-card">
+    <h3>Report</h3>
+    <app-weekly-trend-chart [trendData]="weeklyTrendData"></app-weekly-trend-chart>
   </div>
+
+  <!-- Visits Chart -->
+  <div class="chart-card">
+    <h3>Visits</h3>
+    <app-visits-bar-chart [visitsData]="visitsData"></app-visits-bar-chart>
+  </div>
+</div>
